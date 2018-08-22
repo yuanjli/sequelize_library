@@ -1,0 +1,34 @@
+<h2> All the books!</h2>
+<% books.forEach(function(b){%>
+<div>
+	<h3>
+		<a href="/books/<%=b.id%>"><%= b.title%></a> by	
+		<%= b.author %>  
+	</h3>
+	<p> It's  <%= b.pages %> pages long! </p>
+	<a class="delete-btn" href="/books/<%=b.id%>">Do you want to get rid of it?</a>
+</div>
+<%});%>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$('.delete-btn').click(function(e){
+			e.preventDefault();
+			var url = $(this).attr('href');
+			$.ajax({
+				method: "DELETE",
+				url: url
+			}).done(function(data){
+				//console.log('massage:', data);
+				window.location = '/books';
+			}).fail(function(err){
+				console.log('error message:', err);
+
+			});
+
+		});
+	})
+</script>
+
+

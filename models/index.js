@@ -1,5 +1,7 @@
 'use strict';
 
+// auto generate , so we don't have to require again when we call;
+
 var fs        = require('fs');
 var path      = require('path');
 var Sequelize = require('sequelize');
